@@ -14,8 +14,37 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 
     <script>
+        const Book = ({name, year, price}) => {
+            return React.createElement('div', {}, 
+                React.createElement('h2', {}, name),
+                React.createElement('p', {}, year),
+                React.createElement('p', {}, price),
+            )
+        }
+
         const App = () => {
-            return React.createElement('h1', {id: 'hello', className: 'class1'}, 'Hello from React'
+            return React.createElement('div', {}, 
+            React.createElement('h1', {id: 'hello', className: 'class1'}, 'Hello from React'),
+            React.createElement(Book, {
+                name: 'JS for beginners',
+                year: 2010,
+                price: '900 rub',
+            }),
+            React.createElement(Book, {
+                name: 'Python for beginners',
+                year: 2023,
+                price: '5900 rub',
+            }),
+            React.createElement(Book, {
+                name: 'SQL for beginners',
+                year: 2018,
+                price: '1900 rub',
+            }),
+            React.createElement(Book, {
+                name: 'HTML for beginners',
+                year: 2022,
+                price: '2900 rub',
+            }),
             )
         }
 
