@@ -17,9 +17,11 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-        <button onClick={ this.handleAddCount }>add ... + </button>
-          <span>Hello from react { this.state.count }</span>
+        <span>Hello from react</span>
         <button onClick={ this.handleMinusCount }>minus ... - </button>
+          <span>{ this.state.count }</span>
+        <button onClick={ this.handleAddCount }>add ... + </button>
+        
       </div>
     );
   }
