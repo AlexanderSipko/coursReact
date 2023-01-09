@@ -1,4 +1,6 @@
+import './style/app.css'
 import React, { Component } from "react";
+
 
 class App extends Component {
 
@@ -14,13 +16,22 @@ class App extends Component {
     this.setState((prevState) => ({count: prevState.count - 1}))
   }
 
+  colorText = (count) => {
+    let colorStyle = ''
+    count < 1 ? colorStyle='red':colorStyle='green'
+    return colorStyle
+  }
+
+
   render () {
     return (
       <div className="App">
-        <span>Hello from react</span>
-        <button onClick={ this.handleMinusCount }>minus ... - </button>
-          <span>{ this.state.count }</span>
-        <button onClick={ this.handleAddCount }>add ... + </button>
+        <span className='title'>Счетчик прибавления значения</span>
+        <button onClick={ this.handleMinusCount }> - </button>
+          <span style={{color:this.colorText(this.state.count)}}>
+            {this.state.count}
+          </span>
+        <button onClick={ this.handleAddCount }> + </button>
         
       </div>
     );
