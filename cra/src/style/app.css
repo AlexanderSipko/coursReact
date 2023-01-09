@@ -5,15 +5,25 @@
     font-weight: bold;
 }
 
+.App {
+    margin: 0.75rem auto;
+    max-width: max-content;
+}
+
 .title {
     color: rgb(0, 74, 158);
     margin: 15px;
 
 }
 
+.app--count {
+    display: inline-block;
+    min-width: 20px;
+}
+
 button {
     border: none;
-    margin: 15px;
+    margin: 1rem 2rem;
     cursor: pointer;
     width: 45px;
     height: 45px;
@@ -26,3 +36,4 @@ button:hover {
     opacity: 1;
     color: black;
 }
+

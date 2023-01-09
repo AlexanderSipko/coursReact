@@ -25,10 +25,10 @@ class App extends Component {
 
   render () {
     return (
-      <div className="App">
+      <div className="App" >
         <span className='title'>Счетчик прибавления значения</span>
         <button onClick={ this.handleMinusCount }> - </button>
-          <span style={{color:this.colorText(this.state.count)}}>
+          <span className='app--count' style={{color:this.colorText(this.state.count)}}>
             {this.state.count}
           </span>
         <button onClick={ this.handleAddCount }> + </button>
