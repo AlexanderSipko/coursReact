@@ -1,0 +1,22 @@
+
+
+.AClist--id .AClist--id--h3 {
+    cursor: pointer;
+    color: green;
+    margin-left: 15px;
+    background: rgb(219 247 246);
+    border-radius: 5px;
+    padding: 5px;
+    max-width: max-content;
+    min-width: 500px;
+}
+
+.AClist--block {
+    background-color: rgb(224, 224, 224);
+    padding: 15px;
+    border-radius: 5px;
+    max-width: max-content;
+    min-width: 500px;
+    margin: 0 auto;
+    color: black;
+}
