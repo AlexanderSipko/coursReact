@@ -24,6 +24,7 @@ class App extends Component {
 
 
   render () {
+    console.log('render', this.state.count);
     return (
       <div className="App" >
         <span className='title'>Счетчик прибавления значения</span>
@@ -39,3 +40,4 @@ class App extends Component {
 }
  
 export default App;
+
