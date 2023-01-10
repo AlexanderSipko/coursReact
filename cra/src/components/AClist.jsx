@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AAplusMinus from './AAplusMinus'
 import ABlifeCycle from './ABlifeCycle'
+import ADtimer from './ADtimer'
 import '../style/AClist.css'
 
 class AClist extends Component {
@@ -15,7 +16,8 @@ class AClist extends Component {
     this.setState = {
         items: [
             {key:'AAplusMinus', title:'1 - Плюс и минус (состояние) - AAplusMinus', app:<AAplusMinus />},
-            {key:'ABlifeCycle', title:'2 - Жизненный цикл компонента - ABlifeCycle', app:<ABlifeCycle />}
+            {key:'ABlifeCycle', title:'2 - Жизненный цикл компонента - ABlifeCycle', app:<ABlifeCycle />},
+            {key:'ADtimer', title:'3 - Таймер - ADtimer', app:<ADtimer />},
         ]
     }
     return (
