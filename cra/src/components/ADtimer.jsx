@@ -3,10 +3,11 @@ import '../style/ADtimer.css'
 class ADtimer extends Component {
 
     state = {
-      time:0,
+      time: !localStorage.getItem('time') ? 0 : JSON.parse(localStorage.getItem('time')) ,
       statusButton:false,
       timeCount:0,
-      time_write: []
+      time_write: !localStorage.getItem('list') ? JSON.stringify('[]') : JSON.parse(localStorage.getItem('list'))
+      // time_write: JSON.parse(localStorage.getItem('list'))
     }
 
    secondsToHms = (d) => {
@@ -42,15 +43,27 @@ class ADtimer extends Component {
   }
 
   timerStop = () => {
-    clearInterval(this.timerID)
-    console.log(this.secondsToHms(this.state.time))
-    this.setState({time_write: [...this.state.time_write, this.secondsToHms(this.state.time)] })
+    clearInterval(this.timerID);
+    // console.log(this.secondsToHms(this.state.time));
+    let arrTimerList = [...this.state.time_write, this.secondsToHms(this.state.time)]
+    arrTimerList = arrTimerList.filter( item => item !== '[').filter( item => item !== ']')
+    this.setState({time_write: arrTimerList });
+    localStorage.setItem("time", this.state.time)
+    localStorage.setItem("list", JSON.stringify(arrTimerList))
   }
 
   timerReset = () => {
-    clearInterval(this.timerID)
-    this.setState(this.setState({time: 0}))
-    this.setState({time_write: [...this.state.time_write, '-- Reset --'] })
+    clearInterval(this.timerID);
+    this.setState(this.setState({time: 0}));
+    this.setState({time_write: [...this.state.time_write, '-- Reset --'] });
+    localStorage.setItem("time", '0')
+    localStorage.setItem("list", JSON.stringify([...this.state.time_write, '-- Reset --']))
+  }
+
+  clearLocalStoraje = () => {
+    localStorage.setItem("time", '0')
+    localStorage.setItem("list", JSON.stringify('[]'))
+    this.setState({time_write: JSON.parse('[]') });
   }
 
   render () {
@@ -59,7 +72,7 @@ class ADtimer extends Component {
         <div className="classTimer">
             <h2 className="t--h2">TIMER</h2>
             <h3 className="t--h3">{ this.secondsToHms(this.state.time) }</h3>
-            <p onClick={ () =>  this.setState({time:this.state.time+1}) }>+</p>
+            <p onClick={ () => this.clearLocalStoraje() }> удалить записи </p>
             <button className="buttonStart"
               onClick={ this.timerStart }
             >{ !this.state.statusButton ? 'Start' : 'Stop' }
@@ -68,9 +81,9 @@ class ADtimer extends Component {
               className="buttonReset"
               onClick={ this.timerReset }
             >Reset</button>
-            { this.state.time_write.map( (item, index) => {
+            { this.state.time_write !== '[]' ? this.state.time_write.map( (item, index) => {
               return <p>{index+=1} - {item}</p>
-            }) }
+            }) : '' }
         </div>
       </div>
     )
