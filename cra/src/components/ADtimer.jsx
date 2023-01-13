@@ -19,7 +19,7 @@ class ADtimer extends Component {
 
     let hDisplay = h > 0 ? (h < 9 ? `0${h}` : `${h}`) : "00";
     let mDisplay = m > 0 ? (m < 9 ? `0${m}` : `${m}`) : "00";
-    //let sDisplay = s > 0 ? (s < 9 ? `0${s}` : `${s}`) : "00";
+    let sDisplay = s > 0 ? (s < 9 ? `0${s}` : `${s}`) : "00";
 
     return `${hDisplay}:${mDisplay}:${sDisplay}`
 }
