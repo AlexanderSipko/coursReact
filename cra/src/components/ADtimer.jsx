@@ -5,7 +5,8 @@ class ADtimer extends Component {
     state = {
       time:0,
       statusButton:false,
-      timeCount:0
+      timeCount:0,
+      time_write: []
     }
 
    secondsToHms = (d) => {
@@ -26,7 +27,6 @@ class ADtimer extends Component {
 
   timerStart = () => {
     if (this.state.statusButton) {
-      console.log(`Запись данных таймера в лог ${this.secondsToHms(this.state.time)}`)
       this.timerStop();
       this.setState({statusButton:false });
     } else {
@@ -37,19 +37,20 @@ class ADtimer extends Component {
       this.timerID = setInterval( () => {
         this.setState((prev) => this.setState({time: prev.time + 1}))
       }, 100)
-    } else {
-      this.timerStop();
     }
     
   }
 
   timerStop = () => {
     clearInterval(this.timerID)
+    console.log(this.secondsToHms(this.state.time))
+    this.setState({time_write: [...this.state.time_write, this.secondsToHms(this.state.time)] })
   }
 
   timerReset = () => {
     clearInterval(this.timerID)
     this.setState(this.setState({time: 0}))
+    this.setState({time_write: [...this.state.time_write, '-- Reset --'] })
   }
 
   render () {
@@ -67,6 +68,9 @@ class ADtimer extends Component {
               className="buttonReset"
               onClick={ this.timerReset }
             >Reset</button>
+            { this.state.time_write.map( (item, index) => {
+              return <p>{index+=1} - {item}</p>
+            }) }
         </div>
       </div>
     )
