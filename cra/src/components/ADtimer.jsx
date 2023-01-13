@@ -10,7 +10,8 @@ class ADtimer extends Component {
 
    secondsToHms = (d) => {
     //формирование часов минут и секунд на основании полученных данных
-
+    
+       // новыве данные в данном месте
     d = Number(d);
     let h = Math.floor(d / 3600);
     let m = Math.floor(d % 3600 / 60);
