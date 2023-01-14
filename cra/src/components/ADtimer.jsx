@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import '../style/ADtimer.css'
 class ADtimer extends Component {
-
+    // первая попытка самостоятельно собрать таймер
     state = {
       time: !localStorage.getItem('time') ? 0 : JSON.parse(localStorage.getItem('time')) ,
       statusButton:false,
@@ -89,5 +89,125 @@ class ADtimer extends Component {
     )
   }
 }
+
+class ADtimerSalfe extends Component {
+  // первая попытка самостоятельно собрать таймер
+  state = {
+    time: 0,
+    isCount:false,
+  }
+
+ secondsToHms = (d) => {
+  //формирование часов минут и секунд на основании полученных данных
+     // новыве данные в данном месте
+  d = Number(d);
+  let h = Math.floor(d / 3600);
+  let m = Math.floor(d % 3600 / 60);
+  let s = Math.floor(d % 3600 % 60);
+
+  let hDisplay = h > 0 ? (h < 9 ? `0${h}` : `${h}`) : "00";
+  let mDisplay = m > 0 ? (m < 9 ? `0${m}` : `${m}`) : "00";
+  let sDisplay = s > 0 ? (s < 9 ? `0${s}` : `${s}`) : "00";
+
+  return `${hDisplay}:${mDisplay}:${sDisplay}`
+}
+
+
+handlerStart = () => {
+}
+
+handlerStop = () => {
+}
+
+handleReset = () => {
+}
+
+render () {
+  return (
+    <div className="ADtimer">
+      <div className="classTimer">
+          <h2 className="t--h2">TIMER</h2>
+          <h3 className="t--h3">{ this.secondsToHms(this.state.time) }</h3>
+          <p onClick={ () => this.clearLocalStoraje() }> удалить записи </p>
+          <button
+            className="buttonStart"
+            onClick={ this.handlerStart }
+          >Start
+          </button>
+          <button
+            className="buttonStop"
+            onClick={ this.handlerStop }
+          >Stop
+          </button>
+          <button
+            className="buttonReset"
+            onClick={ this.handleReset }
+          >Reset</button>
+          {/* { this.state.time_write !== '[]' ? this.state.time_write.map( (item, index) => {
+            return <p>{index+=1} - {item}</p>
+          }) : '' } */}
+      </div>
+    </div>
+  )
+}
+}
+
+class ADtimerT extends Component {
+  state = {
+      count: 0,
+      isCounting: false,
+  };
+
+  componentDidMount() {
+    // получаем значение из локального хранилища если оно есть
+    let userCount = localStorage.getItem('timeNew')
+    if (userCount) {
+      this.setState({count:JSON.parse(userCount)})
+    }
+  } 
+
+  componentDidUpdate() {
+    // каждый раз записываем значение переменной в локальное хранилище
+    localStorage.setItem('timeNew', this.state.count)
+  }
+
+  componentWillUnmount() {
+    // если пользователь ушел со страницы то мы останавливаем счетсик
+    this.setState({isCounting:false})
+    clearInterval(this.countId)
+  }
+
+  handleStart = () => {
+    this.setState({isCounting:true})
+    this.countId = setInterval(() => {
+      this.setState(prev => ({count:prev.count+1}))
+    }, 1000)
+  }
+
+  handleStop = () => {
+    this.setState({isCounting:false})
+    clearInterval(this.countId)
+  }
+
+  handleReset = () => {
+    this.setState({count:0, isCounting:false})
+    clearInterval(this.countId)
+  }
+
+  render() {
+      return (
+          <div className="App">
+              <h1>React Timer</h1>
+              <h3>{this.state.count}</h3>
+              {!this.state.isCounting ? (
+                  <button onClick={this.handleStart}>Start</button>
+              ) : (
+                  <button onClick={this.handleStop}>Stop</button>
+              )}
+              <button onClick={this.handleReset}>Reset</button>
+          </div>
+      );
+  }
+}
  
-export default ADtimer;
+export {ADtimer, ADtimerSalfe, ADtimerT};

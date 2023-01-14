@@ -16,10 +16,11 @@
     margin-bottom: 10px;
 }
 
-.buttonStart {
+        
+.buttonStart, .buttonStop {
     margin-right: 10px;
 }
 
-.buttonStart, .buttonReset {
+.buttonStart, .buttonStop, .buttonReset {
     min-width: 100px;
 }
