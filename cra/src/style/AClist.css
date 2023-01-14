@@ -11,6 +11,11 @@
     min-width: 500px;
 }
 
+.list--close {
+    margin-left: 35px;
+    cursor: pointer;
+}
+
 .AClist--block {
     background-color: rgb(224, 224, 224);
     padding: 15px;
@@ -19,4 +24,7 @@
     min-width: 500px;
     margin: 0 auto;
     color: black;
+    /* flex-direction: column;
+    align-content: center;
+    align-items: flex-end; */
 }

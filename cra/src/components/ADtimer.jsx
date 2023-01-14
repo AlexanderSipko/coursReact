@@ -105,21 +105,46 @@ class ADtimerSalfe extends Component {
   let m = Math.floor(d % 3600 / 60);
   let s = Math.floor(d % 3600 % 60);
 
-  let hDisplay = h > 0 ? (h < 9 ? `0${h}` : `${h}`) : "00";
-  let mDisplay = m > 0 ? (m < 9 ? `0${m}` : `${m}`) : "00";
-  let sDisplay = s > 0 ? (s < 9 ? `0${s}` : `${s}`) : "00";
+  let hDisplay = h > 0 ? (h < 10 ? `0${h}` : `${h}`) : "00";
+  let mDisplay = m > 0 ? (m < 10 ? `0${m}` : `${m}`) : "00";
+  let sDisplay = s > 0 ? (s < 10 ? `0${s}` : `${s}`) : "00";
 
   return `${hDisplay}:${mDisplay}:${sDisplay}`
 }
 
+componentDidMount() {
+  const timeLocal = localStorage.getItem('timeNewSelf')
+
+  if (timeLocal === undefined) {
+    this.setState({time:JSON.parse(timeLocal)})
+  }
+}
+
+componentDidUpdate() {
+  localStorage.setItem('timeNewSelf', this.state.time)
+}
+
+componentWillUnmount() {
+  clearInterval(this.timerID)
+  this.setState({isCount:false})
+}
 
 handlerStart = () => {
+  // заупускаем автообновление счетчика
+  this.setState({isCount:true})
+  this.timerID = setInterval(
+    () => { this.setState({time:this.state.time+1}) }, 1000
+  )
 }
 
 handlerStop = () => {
+  clearInterval(this.timerID)
+  this.setState({isCount:false})
 }
 
 handleReset = () => {
+  clearInterval(this.timerID)
+  this.setState({time:0, isCount:false})
 }
 
 render () {
@@ -129,20 +154,18 @@ render () {
           <h2 className="t--h2">TIMER</h2>
           <h3 className="t--h3">{ this.secondsToHms(this.state.time) }</h3>
           <p onClick={ () => this.clearLocalStoraje() }> удалить записи </p>
-          <button
-            className="buttonStart"
-            onClick={ this.handlerStart }
-          >Start
+          { !this.state.isCount ? (
+            <button className="buttonStart" onClick={ this.handlerStart }>
+              Start
+            </button>) : (
+            <button className="buttonStop" onClick={ this.handlerStop }>
+              Stop
+            </button>)
+          }
+          <button className="buttonReset" onClick={ this.handleReset }>
+              Reset
           </button>
-          <button
-            className="buttonStop"
-            onClick={ this.handlerStop }
-          >Stop
-          </button>
-          <button
-            className="buttonReset"
-            onClick={ this.handleReset }
-          >Reset</button>
+          
           {/* { this.state.time_write !== '[]' ? this.state.time_write.map( (item, index) => {
             return <p>{index+=1} - {item}</p>
           }) : '' } */}
@@ -210,4 +233,4 @@ class ADtimerT extends Component {
   }
 }
  
-export {ADtimer, ADtimerSalfe, ADtimerT};
+export {ADtimerSalfe};
