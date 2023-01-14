@@ -13,8 +13,8 @@ class App extends Component {
     // console.log('render', this.state.count)
     return (
       <div className="App">
+        
         <h1>React для современных веб-приложений</h1>
-
         <div className="ClassComponents">
           <h2 onClick={ () => console.log('a')  }>Классовые компоненты</h2>
             { this.state.visibleList ? <AClist /> : null }
