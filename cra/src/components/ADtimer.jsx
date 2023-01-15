@@ -12,8 +12,7 @@ class ADtimer extends Component {
 
    secondsToHms = (d) => {
     //формирование часов минут и секунд на основании полученных данных
-    
-       // новыве данные в данном месте
+       // новые данные в данном месте
     d = Number(d);
     let h = Math.floor(d / 3600);
     let m = Math.floor(d % 3600 / 60);
@@ -95,6 +94,7 @@ class ADtimerSalfe extends Component {
   state = {
     time: 0,
     isCount:false,
+    listTime:[]
   }
 
  secondsToHms = (d) => {
@@ -115,7 +115,7 @@ class ADtimerSalfe extends Component {
 componentDidMount() {
   const timeLocal = localStorage.getItem('timeNewSelf')
 
-  if (timeLocal === undefined) {
+  if (timeLocal) {
     this.setState({time:JSON.parse(timeLocal)})
   }
 }
@@ -130,7 +130,7 @@ componentWillUnmount() {
 }
 
 handlerStart = () => {
-  // заупускаем автообновление счетчика
+  // запускаем самообновление счетчика
   this.setState({isCount:true})
   this.timerID = setInterval(
     () => { this.setState({time:this.state.time+1}) }, 1000
@@ -166,9 +166,9 @@ render () {
               Reset
           </button>
           
-          {/* { this.state.time_write !== '[]' ? this.state.time_write.map( (item, index) => {
-            return <p>{index+=1} - {item}</p>
-          }) : '' } */}
+          {/* { this.state.listTime.map( (item, index) => {
+            return <p>{index+=1} - {this.secondsToHms(item)}</p>
+          })} */}
       </div>
     </div>
   )
