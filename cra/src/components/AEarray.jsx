@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-
-
+import { Posts } from './posts/Posts'
 class AEarray extends Component {
 
   state = {
@@ -20,7 +19,9 @@ class AEarray extends Component {
             <li key={ item.id }>{ item.name }</li>
           )) }
         </ul>
-        
+
+        <Posts posts={this.state.posts}/>
+
       </div>
     )
   }
