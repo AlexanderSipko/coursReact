@@ -9,7 +9,7 @@ class AEarray extends Component {
       {id:'js-3', name:'React JS'},
     ],
     isHandle:'No handle',
-    idPost:''
+    idPost:'Функция -- вызвана в дочернем элементе'
   }
 
   handleSomething = (props) => {
