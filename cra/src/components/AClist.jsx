@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import AAplusMinus from './AAplusMinus'
 import ABlifeCycle from './ABlifeCycle'
 import {ADtimerSalfe} from './ADtimer'
+import {AEarray} from './AEarray'
 
 import '../style/AClist.css'
 
@@ -25,6 +26,7 @@ class AClist extends Component {
             {key:'ADtimerSalfe', title:'3 - Таймер - ADtimerSalfe', app:<ADtimerSalfe />},
             // {key:'ADtimer', title:'4 - Таймер - ADtimer', app:<ADtimer />},
             // {key:'ADtimerT', title:'5 - Таймер - ADtimerT', app:<ADtimerT />},
+            {key:'AEarray', title:'4 - Список - AEarray', app:<AEarray />}
         ]
     }
     return (
@@ -32,7 +34,9 @@ class AClist extends Component {
         <div className="AClist--id">
           
             { this.setState.items.map((item) => 
+              
                 <h3
+                  key = {'app--' + item.key} 
                   className="AClist--id--h3"
                   id={item.key} 
                   onClick={ () => this.handClick('app--' + item.key) }

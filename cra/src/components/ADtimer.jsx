@@ -110,6 +110,8 @@ class ADtimerSalfe extends Component {
   let sDisplay = s > 0 ? (s < 10 ? `0${s}` : `${s}`) : "00";
 
   return `${hDisplay}:${mDisplay}:${sDisplay}`
+
+
 }
 
 componentDidMount() {
