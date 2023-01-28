@@ -1,27 +1,33 @@
 import React from "react";
-
-
+import '../style/AFform.css'
 
 class AFform extends React.Component {
 
     state = {
         firstName: '',
+        email: '',
     }
 
     handleChange = (event) => {
-        this.setState({firstName:event.target.value})
+        this.setState({[event.target.name]:event.target.value})
     }
 
     render () {
-        const {firstName} = this.state
+        const {firstName, email} = this.state
 
         return (
-            <div>
+            <div className="AFform">
                 <input
                 onChange={ this.handleChange}
                 type="text"
-                name='FirstName'
+                name='firstName'
                 value={firstName}
+                />
+                <input
+                onChange={ this.handleChange}
+                type='email'
+                name='email'
+                value={email}
                 />
             </div>
         )
