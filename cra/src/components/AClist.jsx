@@ -3,6 +3,7 @@ import AAplusMinus from './AAplusMinus'
 import ABlifeCycle from './ABlifeCycle'
 import {ADtimerSalfe} from './ADtimer'
 import {AEarray} from './AEarray'
+import {AFform} from './AFform'
 
 import '../style/AClist.css'
 
@@ -26,7 +27,8 @@ class AClist extends Component {
             {key:'ADtimerSalfe', title:'3 - Таймер - ADtimerSalfe', app:<ADtimerSalfe />},
             // {key:'ADtimer', title:'4 - Таймер - ADtimer', app:<ADtimer />},
             // {key:'ADtimerT', title:'5 - Таймер - ADtimerT', app:<ADtimerT />},
-            {key:'AEarray', title:'4 - Список - AEarray', app:<AEarray />}
+            {key:'AEarray', title:'4 - Список - AEarray', app:<AEarray />},
+            {key:'AFform', title:'5 - Формы - AFform', app:<AFform />},
         ]
     }
     return (

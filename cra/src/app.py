@@ -1,12 +1,11 @@
-print('привет')
 
-def howWhen(some):
-    '''this codel rotern'''
-    if some:
-        'скороть'
-        return False
-    return True
 
-class New():
+a = ['russia', 'federation', None, 'a', 'federation',]
 
-    pass 
+# проверка гражданства
+print(all([i in ('russia', 'federation', 'russia federation') for i in set(a) - {None}]))
+
+a = ['Aleksandr', 'Sipko',]
+
+# проверка гражданства
+print(all([i in ('russia', 'federation', 'russia federation') for i in set(a) - {None}]))
