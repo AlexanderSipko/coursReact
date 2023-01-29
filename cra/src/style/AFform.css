@@ -3,3 +3,8 @@
 .AFform input {
     margin: 0px 5px;
 }
+
+.error {
+    color: red;
+    background-color:yellow;
+}
