@@ -8,11 +8,12 @@ class AGform extends React.Component {
       this.state = {
         email: '',
         isAgreeWithTerms: false,
+        isSubmit: false
     };
   }
 
   handlerChange = (event) => {
-    this.setState({[event.target.name]:event.target.value})
+    this.setState({[event.target.name]:event.target.value, isSubmit: false})
   }
 
   handlerChecked = (event) => {
@@ -50,14 +51,18 @@ class AGform extends React.Component {
             return
         }
 
-        alert('You can subscribe')
+        this.setState({
+            email: '',
+            isAgreeWithTerms: false,
+            isSubmit: true
+        })
     }
   
   
   render() {
     
     // TODO: implement component
-    const { email, isAgreeWithTerms } = this.state;
+    const { email, isAgreeWithTerms, isSubmit } = this.state;
 
         return (
             <div>
@@ -81,6 +86,7 @@ class AGform extends React.Component {
                 </label>
                 <br />
                 <button onClick={this.checkSendButton}>Send</button>
+                <p>{isSubmit? 'Вы успешно подписаны':''}</p>
             </div>
         );
   }
