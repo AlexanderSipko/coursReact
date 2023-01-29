@@ -4,6 +4,7 @@ import ABlifeCycle from './ABlifeCycle'
 import {ADtimerSalfe} from './ADtimer'
 import {AEarray} from './AEarray'
 import {AFform} from './AFform'
+import {AGform} from './AGform'
 
 import '../style/AClist.css'
 
@@ -29,6 +30,7 @@ class AClist extends Component {
             // {key:'ADtimerT', title:'5 - Таймер - ADtimerT', app:<ADtimerT />},
             {key:'AEarray', title:'4 - Список - AEarray', app:<AEarray />},
             {key:'AFform', title:'5 - Формы - AFform', app:<AFform />},
+            {key:'AGform', title:'6 - Формы - AGform', app:<AGform />},
         ]
     }
     return (
