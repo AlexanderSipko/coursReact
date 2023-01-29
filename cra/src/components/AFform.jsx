@@ -6,10 +6,18 @@ class AFform extends React.Component {
     state = {
         firstName: '',
         email: '',
+        message: '',
+        select: '0',
+        subscription: false,
+        gender: ''
     }
 
     handleChange = (event) => {
         this.setState({[event.target.name]:event.target.value})
+    }
+
+    handleChangeCheckBox = (event) => {
+        this.setState({[event.target.name]:event.target.checked})
     }
 
     validateName = (event) => {
@@ -34,7 +42,7 @@ class AFform extends React.Component {
     }
 
     render () {
-        const {firstName, email} = this.state
+        const {firstName, email, message, select, subscription, gender} = this.state
 
         return (
             <div className="AFform">
@@ -52,9 +60,47 @@ class AFform extends React.Component {
                     name='email'
                     value={email}
                 />
-                <p>{firstName}</p>
+                <p>name - {firstName === '' ? 'пусто' : firstName}</p>
+
+                <br />
+                <textarea
+                    onChange={ this.handleChange}
+                    name='message'
+                    value={message} >
+                </textarea>
+                <p>m - {message === '' ? 'пусто' : message}</p>
+
+                <select
+                    onChange={ this.handleChange}
+                    name="select"
+                    value={select}>
+                        <option value="0" disabled></option>
+                        <option value="1 - options">1 - options</option>
+                        <option value="2 - options">2 - options</option>
+                        <option value="3 - options">3 - options</option>
+                </select>
+
+                <label>
+                    <input 
+                        onChange={this.handleChangeCheckBox}
+                        type="checkbox"
+                        name="subscription"
+                        checked={subscription}/>
+                    Subscription
+                </label>
+                <p>s - {select === '' ? 'пусто' : select}</p>
+
+                <br />
+
+                <input 
+                    onChange={ this.handleChange} checked={gender === 'mail'}
+                    type="radio" name='gender' value='mail' /> Mail
+                <input 
+                    onChange={ this.handleChange} checked={gender === 'female'} 
+                    type="radio" name='gender' value='female' /> Female
+                <p>r - {gender === '' ? 'пусто' : gender}</p>
             </div>
-        )
+        ) 
     }
 }
 
