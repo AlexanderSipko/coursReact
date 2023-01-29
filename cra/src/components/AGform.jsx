@@ -38,14 +38,19 @@ class AGform extends React.Component {
 
     checkSendButton = () => {
         const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/;
+        const isValidEmail = regEx.test(this.state.email)
+        const isValidCondition = this.state.isAgreeWithTerms
 
-        if (!regEx.test(this.state.email)) {
-            alert('You can\'t write correct email')
-        } else {
-            !this.state.isAgreeWithTerms ? 
-                alert('You can\'t check conditions'): 
-                alert('You can subscribe')
+        if (!isValidEmail) {
+            alert('You email is not valid')
+            return
+        } 
+        if (!isValidCondition) {
+            alert('You can\'t check conditions')
+            return
         }
+
+        alert('You can subscribe')
     }
   
   
