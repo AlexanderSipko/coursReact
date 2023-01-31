@@ -16,7 +16,11 @@ class AHref extends React.Component {
   handlerChange = () => {
     if (this.nameRef.current.value.length === 16) {
       this.nameRefEmail.current.focus();
-    }
+      // this.nameRefEmail.current.value = ''
+    } 
+    //   else {
+    //   this.nameRefEmail.current.value = this.nameRef.current.value
+    // }
   }
 
   render() {
