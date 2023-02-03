@@ -6,6 +6,7 @@ import {AEarray} from './AEarray'
 import {AFform} from './AFform'
 import {AGform} from './AGform'
 import {AHref} from './AHref'
+import {AIunControl} from './AIunControl'
 
 import '../style/AClist.css'
 
@@ -33,6 +34,7 @@ class AClist extends Component {
             {key:'AFform', title:'5 - Формы - AFform', app:<AFform />},
             {key:'AGform', title:'6 - Формы - AGform', app:<AGform />},
             {key:'AHref', title:'7 - Формы - AHref', app:<AHref />},
+            {key:'AIunControl', title:'8 - Не управляемые формы - AIunControl', app:<AIunControl />},
         ]
     }
     return (
